@@ -22,29 +22,25 @@ public class PropertyController {
     public ResponseEntity<PropertyDTO> saveProperty(@RequestBody PropertyDTO propertyDTO){
         propertyDTO = propertyService.saveProperty(propertyDTO);
 
-        ResponseEntity<PropertyDTO> responseEntity = new ResponseEntity<>(propertyDTO, HttpStatus.CREATED);
+        return new ResponseEntity<>(propertyDTO, HttpStatus.CREATED);
 
-        return responseEntity;
     }
 
     @GetMapping("/properties")
     public ResponseEntity<List<PropertyDTO>> getAllProperties(){
         List<PropertyDTO> propertyList = propertyService.getAllProperties();
-        ResponseEntity<List<PropertyDTO>> responseEntity = new ResponseEntity<>(propertyList, HttpStatus.OK);
-        return responseEntity;
+        return new ResponseEntity<>(propertyList, HttpStatus.OK);
     }
 
     @PutMapping("/properties/{id}")
     public ResponseEntity<PropertyDTO> updateProperty(@RequestBody PropertyDTO propertyDTO, @PathVariable Long id){
         propertyDTO = propertyService.updateProperty(propertyDTO,id);
-        ResponseEntity<PropertyDTO> responseEntity = new ResponseEntity<>(propertyDTO, HttpStatus.OK);
-        return responseEntity;
+        return new ResponseEntity<>(propertyDTO, HttpStatus.OK);
     }
     @PatchMapping("/properties/update-description/{id}")
     public ResponseEntity<PropertyDTO> updatePropertyDescription(@RequestBody PropertyDTO propertyDTO, @PathVariable Long id){
         propertyDTO = propertyService.updatePropertyDescription(propertyDTO,id);
-        ResponseEntity<PropertyDTO> responseEntity = new ResponseEntity<>(propertyDTO, HttpStatus.OK);
-        return responseEntity;
+        return new ResponseEntity<>(propertyDTO, HttpStatus.OK);
     }
 
     @DeleteMapping("/properties/{id}")
